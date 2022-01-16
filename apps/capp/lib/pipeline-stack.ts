@@ -2,7 +2,7 @@ import {Stack, StackProps, Stage, StageProps} from 'aws-cdk-lib';
 import {Construct} from 'constructs';
 import {CodePipeline, CodePipelineSource, ShellStep} from "aws-cdk-lib/pipelines";
 
-export class CappStack extends Stack {
+export class CappPipelineStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
         super(scope, id, props);
 
@@ -36,6 +36,6 @@ export class CappStack extends Stack {
 class SaasApplication extends Stage {
     constructor(scope: Construct, id: string, props?: StageProps) {
         super(scope, id, props);
-        new CappStack(this, 'Prod');
+        new CappPipelineStack(this, 'Prod');
     }
 }

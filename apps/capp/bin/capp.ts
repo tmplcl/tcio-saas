@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib';
 import {CappStack} from '../lib/capp-stack';
-import {PipelineStack} from "aws-cdk-lib/aws-codepipeline-actions/test/integ.pipeline-ecs-separate-source.lit";
+import {CappPipelineStack} from "../lib/pipeline-stack";
 
 const app = new cdk.App();
 new CappStack(app, 'CappStack', {
@@ -10,7 +10,7 @@ new CappStack(app, 'CappStack', {
         region: 'eu-central-1'
     }
 });
-new PipelineStack(app, 'PipelineSTack', {
+new CappPipelineStack(app, 'PipelineSTack', {
     env: {
         account: '834067345082',
         region: 'eu-central-1'
