@@ -8,13 +8,15 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "diff": "turbo run diff",
+    "deploy": "turbo run deploy",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "prettier": "^2.5.1",
-    "turbo": "latest"
+    "turbo": "^1.0.28"
   },
   "turbo": {
     "pipeline": {
@@ -32,6 +34,12 @@
       },
       "dev": {
         "cache": false
+      },
+      "diff": {
+        "dependsOn": ["build", "lint"]
+      },
+      "deploy": {
+        "dependsOn": ["diff"]
       }
     }
   },
